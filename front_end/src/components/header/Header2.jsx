@@ -1,7 +1,7 @@
 import { Container, IconButton, InputBase, Stack, Typography } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import {useTheme} from "@mui/material";
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import Badge from '@mui/material/Badge';
@@ -19,7 +19,7 @@ const Search = styled('div')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   border: "1px  solid #777",
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    border:"1px solid #944"
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -70,7 +70,7 @@ const options = [
 ];
 export default function Header2() {
   const [anchorEl, setAnchorEl] = useState();
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const open = Boolean(anchorEl);
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
@@ -89,7 +89,6 @@ export default function Header2() {
   };
   let  theme = useTheme();
   useEffect(()=>{
-    console.log('this theme is ',  theme.palette.myColor)
   })
   return (
     <Container sx={{ my: 3, display: 'flex', justifyContent: "space-between" }}>
