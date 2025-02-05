@@ -19,12 +19,12 @@ export default function Hero() {
     const theme = useTheme()
     return (
         <Container sx={{ mt: 3, display: "flex", alignItems: "center", gap: 1 }}>
-            <Swiper 
-            pagination={true}
-             modules={[Pagination]}
-              className="mySwiper"
-              loop={true}
-              >
+            <Swiper
+                pagination={true}
+                modules={[Pagination]}
+                className="mySwiper"
+                loop={true}
+            >
                 {mySlider.map((item) => {
                     return (
                         <SwiperSlide style={{ position: "relative" }} className='parent-slider'>
@@ -102,7 +102,9 @@ export default function Hero() {
                 sx={{ display: { xs: "none", md: "block", minWidth: "25%" } }}
             >
                 <Box sx={{ position: "relative" }}>
-                    <img src="src\images\banner-17.jpg" width={"100%"} />
+                    <img src="src\images\banner-17.jpg" width={"100%"} height={230}
+
+                    />
                     <Stack
                         className=""
                         sx={{ position: "absolute", top: "50%", transform: "translateY(-50%)", left: 31 }}
@@ -147,7 +149,12 @@ export default function Hero() {
                     </Stack>
                 </Box>
                 <Box sx={{ position: "relative" }} >
-                    <img src="src\images\banner-16.jpg" width={"100%"} />
+                    <img
+                        src="src/images/banner-16.jpg"
+                        width="100%"
+                        height={230}
+                    />
+
                     <Stack
                         className=""
                         sx={{ position: "absolute", top: "50%", transform: "translateY(-50%)", left: 31 }}

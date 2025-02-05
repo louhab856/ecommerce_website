@@ -3,22 +3,24 @@ import Header2 from "./components/header/Header2"
 import Header3 from "./components/header/Header3"
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
+import { Box } from "@mui/material";
 import Hero from "./components/hero/Hero";
+import IconsSections from "./components/hero/IconsSections";
 function App() {
   const [theme, colorMode] = useMode();
   return (
-
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Header1 />
-        <Header2 />
-        <Header3 />
-        <Hero/>
+          <Header1 />
+          <Header2 />
+          <Header3 />
+          <Box bgcolor={theme.palette.bg.main}>
+            <Hero/>
+            <IconsSections/>
+          </Box> 
       </ThemeProvider>
-
     </ColorModeContext.Provider>
-
   )
 }
 
