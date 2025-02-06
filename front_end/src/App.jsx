@@ -6,6 +6,8 @@ import { ColorModeContext, useMode } from "./theme";
 import { Box } from "@mui/material";
 import Hero from "./components/hero/Hero";
 import IconsSections from "./components/hero/IconsSections";
+import Main from "./components/main/Main";
+import Footer from "./components/footer/Footer";
 function App() {
   const [theme, colorMode] = useMode();
   return (
@@ -18,7 +20,9 @@ function App() {
           <Box bgcolor={theme.palette.bg.main}>
             <Hero/>
             <IconsSections/>
+            <Main/>
           </Box> 
+          <Footer />
       </ThemeProvider>
     </ColorModeContext.Provider>
   )
