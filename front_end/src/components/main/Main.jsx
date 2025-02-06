@@ -1,10 +1,21 @@
-import { Container, Stack, Box, Typography, ToggleButtonGroup, ToggleButton, useTheme, Card, CardMedia, CardContent, CardActions, Button, Rating } from '@mui/material'
+import { Container, Stack, Box, Typography, ToggleButtonGroup, ToggleButton, useTheme, Card, CardMedia, CardContent, CardActions, Button, Rating, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton } from '@mui/material'
 import { useState } from 'react';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import { Close } from "@mui/icons-material";
+import ProducDetails from './ProducDetails';
+
 export default function Main() {
     const theme = useTheme();
     const [alignment, setAlignment] = useState('left');
     const [value, setValue] = useState(2.5);
+    const [open, setOpen] = useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     const handleAlignment = (event, newAlignment) => {
         setAlignment(newAlignment);
     };
@@ -58,24 +69,26 @@ export default function Main() {
                 </Box>
             </Stack>
             <Stack
-            direction={"row"}
-            flexWrap={"wrap"}
-            justifyContent={"space-between"}
+                direction={"row"}
+                flexWrap={"wrap"}
+                justifyContent={"space-between"}
             >
                 {
                     ["1", "2", "3"].map((item) => {
                         return (<Card
                             key={item}
-                            sx={{ maxWidth: 333, mt: 6,
+                            sx={{
+                                maxWidth: 333, mt: 6,
                                 ":hover .MuiCardMedia-root": {
-                                        scale: "1.1",
-                                        transition:"0.35s",
-                                        rotate:"1deg"
+                                    scale: "1.1",
+                                    transition: "0.35s",
+                                    rotate: "1deg"
                                 }
-                             }}>
+                            }}>
                             <CardMedia
-                                sx={{ height: 277,
-                                 }}
+                                sx={{
+                                    height: 277,
+                                }}
                                 image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
                                 title="green iguana"
                             />
@@ -100,7 +113,7 @@ export default function Main() {
                                 </Typography>
                             </CardContent>
                             <CardActions sx={{ justifyContent: 'space-between' }}>
-                                <Button size="large">
+                                <Button size="large" onClick={handleClickOpen}>
                                     <AddShoppingCartOutlinedIcon sx={{ mr: 1 }} fontSize='small' />
                                     Add to Cart
                                 </Button>
@@ -110,6 +123,23 @@ export default function Main() {
                     })
                 }
             </Stack>
+            <Dialog
+                sx={{ ".MuiPaper-root": { minWidth: { xs: "100%", md: 800 } } }}
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <IconButton sx={{
+                    ":hover": { color: "red", rotate: "360deg", transition: "0.4s" },
+                    position: "absolute", top: 1, right: 5
+                }}
+                    onClick={handleClose}
+                >
+                    <Close />
+                </IconButton>
+                <ProducDetails></ProducDetails>
+            </Dialog>
         </Container>
     )
 }
